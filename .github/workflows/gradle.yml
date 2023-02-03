@@ -13,11 +13,14 @@ on:
 
 permissions:
   contents: read
+  packages: write
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
     - uses: actions/checkout@v3
@@ -26,11 +29,15 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-    - name: Build with Gradle
+        cache: gradle
+
+    - name: Build with Gradle without tests
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
-        arguments: build
-        
+        arguments: clean build 
+
+    # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
+    # the publishing section of your build.gradle
     - name: Save result jar for further use
       uses: actions/upload-artifact@v2
       with:
