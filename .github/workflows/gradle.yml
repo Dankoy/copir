@@ -32,13 +32,4 @@ jobs:
     - name: Build with Gradle without tests
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
-        arguments: clean build 
-
-    # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
-    # the publishing section of your build.gradle
-    - name: Save result jar for further use
-      uses: actions/upload-artifact@v2
-      with:
-       name: app.jar
-       path: build/libs/*
-       retention-days: 5
+        arguments: clean build
