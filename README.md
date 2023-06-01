@@ -1,3 +1,7 @@
+# Archived 
+
+Moved to [steamdeck-helpers](https://github.com/Dankoy/steamdeck-helpers)
+
 # copir
 
 Copy files from one directory, which contains multiple nested directories to one flat folder.    
